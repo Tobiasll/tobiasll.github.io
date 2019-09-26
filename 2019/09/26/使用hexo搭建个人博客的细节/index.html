@@ -22,7 +22,7 @@
     <meta name="description" content="一名计算机小白，JAVA新手的个人博客">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>自我介绍 · Tobias Blog</title>
+    <title>使用hexo搭建个人博客的细节 · Tobias Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -218,7 +218,7 @@
 </head>
 
     
-        <body class="about-body">
+        <body class="post-body">
     
     
 <header class="header">
@@ -226,6 +226,15 @@
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Tobias</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">使用hexo搭建个人博客的细节</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Tobias</a>
 </header>
@@ -244,23 +253,61 @@ height:50vh;
     <!-- 主页  -->
     
     
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            自我介绍
+            使用hexo搭建个人博客的细节
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">734</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/09/26</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -361,11 +408,72 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <!-- 不可以删除，否则会调用post的layout  -->
-<main class="main about-page">
+            <main class="main post-page">
     <article class="article-entry">
-        <h1 id="自我介绍测试"><a href="#自我介绍测试" class="headerlink" title="自我介绍测试"></a>自我介绍测试</h1>
+        <p>一直都想写点技术文章，但由于鄙人不才，知识储备太少，所以工作一年都是看书和看视频等知识输入类型，并没有进行知识输出，现在决定搭建个人博客，不断学习的过程中写点东西，来当作自己的总结和分享</p>
+<h1 id="博客开源框架选择"><a href="#博客开源框架选择" class="headerlink" title="博客开源框架选择"></a>博客开源框架选择</h1><p>搭建博客有很多种方式，可以完全靠自己纯手工搭建，或采用开源的东西，前者本人觉得太折腾，所以不太适合我这种只想写点文章的个人用户，所以我选了开源静态博客框架加GitHub Page来托管等实现方案，开源框架目前比较火的有Hexo 、Jekyll、WordPress、ghost、Simple，Octopress…</p>
+<pre><code>## Hexo 和 Jekyll</code></pre><p>这是两种我比较了解的框架，两个都是比较主流的选择下面说一下选择原因吧！</p>
+<ol>
+<li><p>Jekyll的底层是 Ruby，而Hexo 的底层是NodeJS，所以要求你有NodeJS环境或者Ruby，由于本人上班的电脑是Windos环境，安装Ruby感觉会比NodeJS麻烦，所以这一点我还是选了Hexo</p>
+</li>
+<li><p>虽然两者都是支持Markdown语法和有很多主题，但是我更喜欢Hexo的主题</p>
+</li>
+<li><p>之前的蚂蚁金服的sofa stack群里发现他们的sofa官网是Hexo写的，同时也期待他们开源这套主题模板，本人想用:joy:</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569480184234.png" alt="1569480184234"></p>
+<p>废话不多说，下面开始安装搭建环境，hexo官网:<a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a></p>
+</li>
+</ol>
+<h1 id="Github创建项目"><a href="#Github创建项目" class="headerlink" title="Github创建项目"></a>Github创建项目</h1><p>由于我们并没有后端服务器，所以我们把博客的东西都放到GitHub上，让GitHub做托管，这里由于我没有申请域名所以我还是用标准的GitHub Page ，由于GitHub有个特点就是它会用<strong>你的用户名.github.io/项目名/</strong>访问你仓库的index.html，<br>例如：tobiasll.github.io/HappyBirthday<br>所以我们要创建一个项目名叫 <strong>你的GitHub用户名.github.io</strong>来作为你的blog仓库，到时候如何没有买域名的小伙伴就可以直接用你的用户名.github.io不用加上项目名就可以直接访问你的博客了</p>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>首先到github创建一个项目，项目名为你的用户名.github.io</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569481199824.png" alt="1569481199824"></p>
+<p>为什么图片要用红圈圈着SSH，因为后面我们可以用SSH keys 方式部署hexo提交代码，就不用每次都输入用户名和密码</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>既然是托管到github，那肯定要安装Git啊！Git官网:<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>，git的安装自行Google</p>
+<p>安装完我们要设置ssh key  ，首先进入或者在菜单里搜索 Git Bash，设置 user.name 和 user.email 配置信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后生成设置SSH密钥文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://yoursite.com">tobias</a>
+            <p>原文链接：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/</a>
+            <p>发表日期：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">September 26th 2019, 2:05:45 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">September 26th 2019, 3:16:21 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/09/25/hello-world/" title= "Hello World">
+                    <div class="prevTitle">Hello World</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -450,6 +558,24 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#博客开源框架选择"><span class="toc-number">1.</span> <span class="toc-text">博客开源框架选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github创建项目"><span class="toc-number">2.</span> <span class="toc-text">Github创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建项目"><span class="toc-number">2.1.</span> <span class="toc-text">新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -611,6 +737,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
