@@ -281,7 +281,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">776</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.4k</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -437,6 +437,42 @@ height:50vh;
 <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569482989245.png" alt="1569482989245"></p>
 <p>输入命令后去C盘框生存目录的地址找到id_rsa.pub文件然后复制这个文件的密钥字符串到github 的新增ssh key中</p>
 <p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569483307400.png" alt="1569483307400"></p>
+<p>然后到gitBash 测试一下输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569483634365.png" alt="1569483634365"></p>
+<h1 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h1><p>Hexo 基于 Node.js，Node.js 下载地址：<a href="https://link.zhihu.com/?target=https%3A//nodejs.org/en/download/" target="_blank" rel="noopener">Download | Node.js</a> 下载安装包，注意安装 Node.js 会包含环境变量及 npm 的安装，安装后，检测 Node.js 是否安装成功，在命令行中输入 node -v</p>
+<p>检测 npm 是否安装成功，在命令行中输入 npm -v :</p>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><p>先到你的想要存放的hexo数据的目录下创建一个空的文件夹，然后进去文件夹，在地址栏输入cmd进入命令行<img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569483903636.png" alt="1569483903636"></p>
+<p>然后输入安装hexo的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装完成输入,初始化我们的博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>这是初始化完成就会出现一个blog文件夹</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569484086387.png" alt="1569484086387"></p>
+<p>然后在命令行测试hexo是否搭建成功，输入(注意如掉//后面的内容，)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo n test_tobias      # 注释 hexo new &quot;我的博客&quot; 新建文章</span><br><span class="line">hexo g                  # hexo generate  生成</span><br><span class="line">hexo s  				# hexo server 启动服务预览</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569484661570.png" alt="1569484661570"></p>
+<p>然后在浏览器输入：<a href="http://localhost:4000，出现以下页面则说明搭建成功" target="_blank" rel="noopener">http://localhost:4000，出现以下页面则说明搭建成功</a></p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569484704075.png" alt="1569484704075"></p>
+<h1 id="推送本地hexo到github托管"><a href="#推送本地hexo到github托管" class="headerlink" title="推送本地hexo到github托管"></a>推送本地hexo到github托管</h1><p>因为我们要做到的时让别人能通过外网访问我们的博客，上面的方式是在本机部署的方式，所以我们要把代码放到GitHub上，让github24小时托管，我们每次在本地写完文章或修改配置后部署到github上就好了</p>
+<p>为了达到此目的，我们需要修改_config.yml配置文件，绑定我们的git地址，但是_config.yml是有两个一模一样的名子的，希望大家注意一下，别被坑到</p>
+<ol>
+<li><p>第一个是在blog文件夹下的，是用来配置hexo站点的<strong>站点</strong>配置文件</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569485334754.png" alt="1569485334754"></p>
+</li>
+<li><p>第二个是在themes文件下的，是用来配置主题也就是页面样式的<strong>主题</strong>配置文件</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569485426158.png" alt="1569485426158"></p>
+</li>
+</ol>
+<p>那我们需要推送网站到github上，所以我们就需要配置站点的git地址，所以我们要修改<strong>blog目录</strong>下_config.yml的<strong>站点</strong>配置文件</p>
+<p>打开config.yml文件添加 下面的配置：type、repo、brach前面一定要有两个空格，冒号：后面也要一个空格</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">这里填入你之前在GitHub上创建仓库的ssh完整路径，记得加上.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569485764012.png" alt="1569485764012"></p>
 
     </article>
     <!-- license  -->
@@ -445,7 +481,7 @@ height:50vh;
             <p>Author：<a href="http://yoursite.com">tobias</a>
             <p>原文链接：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/</a>
             <p>发表日期：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">September 26th 2019, 2:05:45 pm</a>
-            <p>更新日期：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">September 26th 2019, 3:35:48 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2019/09/26/使用hexo搭建个人博客的细节/">September 26th 2019, 4:16:31 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -577,7 +613,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#博客开源框架选择"><span class="toc-number">1.</span> <span class="toc-text">博客开源框架选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github创建项目"><span class="toc-number">2.</span> <span class="toc-text">Github创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建项目"><span class="toc-number">2.1.</span> <span class="toc-text">新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#博客开源框架选择"><span class="toc-number">1.</span> <span class="toc-text">博客开源框架选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github创建项目"><span class="toc-number">2.</span> <span class="toc-text">Github创建项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新建项目"><span class="toc-number">2.1.</span> <span class="toc-text">新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Git"><span class="toc-number">2.2.</span> <span class="toc-text">安装Git</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装NodeJS"><span class="toc-number">3.</span> <span class="toc-text">安装NodeJS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">4.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#推送本地hexo到github托管"><span class="toc-number">5.</span> <span class="toc-text">推送本地hexo到github托管</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
