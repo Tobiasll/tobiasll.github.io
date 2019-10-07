@@ -78,6 +78,8 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -216,10 +218,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -235,34 +235,21 @@
 
 
 
-
-height:70vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg1.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Tobias
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                一个计算机小白，JAVA新手的个人博客
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -394,192 +381,10 @@ height:70vh;
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/29/使用frp渗透公司内网中的本机虚拟机服务器/" >
-            
-                <span>使用frp渗透公司内网中的本机虚拟机服务器</span>
-        </a>
-        <div class="abstract-content">
-            序言由于公司配了一条新的8G内存条，之前开虚拟机都会导致本机内存满掉，这次终于可以愉快的开虚拟机了:smirk:，虽然手上有三台服务器，搬瓦工和Google cloud 还有阿里云各一台，但是都是最低配置的，没法做集群，而且没法开多个服务，所以决定将电脑的centos虚拟机当成一台服务器，但是公司做了很多网络限制，例如网盘，网易云，bilibili等很多网站都被做了限制，以及外网根本连不进去公司的电脑，所以只能通过代理的形式，目前使用shadowsocks 全局代理形式访问被公司封禁的网站，使用frp / ngrok和 teamview 连进公司的电脑，teamview 安装Linux的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/29</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "工具使用">工具使用</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/26/使用hexo搭建个人博客的细节/" >
-            
-                <span>使用hexo搭建个人博客的细节</span>
-        </a>
-        <div class="abstract-content">
-            一直都想写点技术文章，但由于鄙人不才，知识储备太少，所以工作一年都是看书和看视频等知识输入类型，并没有进行知识输出，现在决定搭建个人博客，不断学习的过程中写点东西，来当作自己的总结和分享
-博客开源框架选择搭建博客有很多种方式，可以完全靠自己纯手工搭建，或采用开源的东西，前者本人觉得太折腾，所以不太适合我这种只想写点文章的个人用户，所以我选了开源静态博客框架加GitHub Page来托管等实现方案，开源框架目前比较火的有Hexo 、Jekyll、WordPress、ghost、Simple，Octopress…
-## Hexo 和 Jekyll这是两种我比较了解的框架，两个都是比较主流的选...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "工具使用">工具使用</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/09/25/hello-world/" >
-            
-                <span>Hello World</span>
-        </a>
-        <div class="abstract-content">
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new "My New Post"
-
-More info: Writing
-Run server1$ hexo server
-
-Mo...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/09/25</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/avatar1.jpg >
-    <div class="profile-name">tobias</div>
-    
-    <div class="profile-signature">
-        Die Tat unterscheidet das Ziel vom Traum.
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:tobias_2016@163.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Tobiasll" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/assets/example_qr.jpg" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">

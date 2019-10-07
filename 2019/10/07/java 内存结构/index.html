@@ -22,7 +22,7 @@
     <meta name="description" content="一名计算机小白，JAVA新手的个人博客">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Hello World · Tobias Blog</title>
+    <title>Tobias Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/" >Tobias</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name"></a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            [Untitled Post]
             <!-- 404 -->
             
         </h1>
@@ -281,12 +281,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">73</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.4k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/09/25</span>
+                    <span class="post-intro-time">2019/10/07</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -410,28 +410,115 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>虽然Java和C++都属于一种面向对象型的语言，但是在内存管理方面却有着非常大的区别，书上用了《围城》中的：墙内的人想出去，墙外的人想进来这句话来形容这堵高墙，因为Java有着独特的内存动态分配策略和垃圾收集器等技术，导致Java开发人员不会像C/Cpp那样要去关注内存，从而把内存控制权力交给了jvm，使得一旦发生内存泄漏和溢出，如果对于jvm管理内存不熟悉的话，将会导致很难排查问题。</p>
+<h1 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h1><p>jvm在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。</p>
+<blockquote>
+<p>“Java 虚拟机具有一个堆，堆是运行时数据区域，所有类实例和数组的内存均从此处分配。堆是在 Java 虚拟机启动时创建的。”“在 JVM 中堆之外的内存称为非堆内存 (Non-heap memory)”。可以看出 JVM 主要管理两种类型的内存：堆和非堆。简单来说堆就是 Java 代码可及的内存，是留给开发人员使用的；非堆就是 JVM 留给 自己用的，所以方法区、JVM 内部处理或优化所需的内存 (如 JIT 编译后的代码缓存)、每个类结构 (如运行时常数池、字段和方法数据) 以及方法和构造方法 的代码都在非堆内存中。</p>
+<p><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1/jvm_memory.png" alt="jvm_memory"></p>
+<p><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1%5C3d0db09e499f8436e762e8f1072825be_663x613.png" alt="3d0db09e499f8436e762e8f1072825be_663x613"></p>
+</blockquote>
+<p>JAVA 的 JVM 的内存可分为 3 个区：堆区（堆内和堆外）、栈 区(虚拟机栈和本地方法栈) 和方法区 (method)</p>
+<h2 id="程序计数器（pc寄存器）"><a href="#程序计数器（pc寄存器）" class="headerlink" title="程序计数器（pc寄存器）"></a>程序计数器（pc寄存器）</h2><p>一块比较小的内存空间，可以看作当前线程所执行的字节码的行号指示器。在虚拟机规范中指pc寄存器。</p>
+<ul>
+<li>当正在执行的方法为native时，这个计数器值则为空。</li>
+<li>当该方法不是native时，就保存jvm正在执行的字节码指令的<strong>地址</strong>。</li>
+<li>每一条jvm线程都有直接的程序计数器（线程私有）。</li>
+<li>任意时刻，一条jvm线程只会执行一个该线程的当前方法。</li>
+<li>保证至少可以存一个returnAddress类型的数据或本地指针的值</li>
+<li>当前线程所执行的字节码行号指示器。</li>
+<li>此内存区域是唯一一个在 Java 虚拟机规范中没有规定任何 OutOfMemoryError 情况的区域。</li>
+</ul>
+<h2 id="JAVA-虚拟机栈"><a href="#JAVA-虚拟机栈" class="headerlink" title="JAVA 虚拟机栈"></a>JAVA 虚拟机栈</h2><p>Java虚拟机栈描述的是Java方法执行的内存模型（JMM），并且每个方法执行的同时都会创建一个栈帧，因为除了栈帧的出入栈之外，Java虚拟机栈不会再受到其他因为的影响，所以栈帧可以在堆中分配。</p>
+<ul>
+<li>如果线程请求的栈深度大于虚拟机所允许的深度，将抛出 StackOverflowError 异常。</li>
+<li>如果虚拟机栈可以动态扩展，当扩展时无法申请到足够的内存时会抛出 OutOfMemoryError 异常。</li>
+<li>是线程私有的。</li>
+<li>Java虚拟机也不需要保证内存的连续性。</li>
+<li>通过 -Xss 调整线程堆栈大小，1.5 之后为 1M，之前为 256k，减少堆栈大小，可创建更多线程。</li>
+</ul>
+<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>与Java虚拟机栈执行Java方法（字节码）服务不同，本地方法栈是jvm使用到的<strong>Native</strong>方法服务</p>
+<ul>
+<li>与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常。</li>
+<li>Nativa方法本质上是依赖于具体实现的</li>
+<li>可以自由的决定使用怎样的机制来让Java程序调用本地方法</li>
+<li>任何本地方法接口都会使用某种本地方法栈</li>
+<li>本地方法接口拥有和jvm相同的能力，可以访问虚拟机运行时数据区、直接使用本地处理器的寄存器、直接从本地内存的堆中分配人员数量的内存…</li>
+<li>jvm规范允许本地方法栈实现成固定大小或者根据计算来动态拓展和收缩</li>
+</ul>
+<blockquote>
+<p>Figure 5-13 shows a graphical depiction of a thread that invokes a native method that calls back into the virtual machine to invoke another Java method. This figure shows the full picture of what a thread can expect inside the Java Virtual Machine. A thread may spend its entire lifetime executing Java methods, working with frames on its Java stack. Or, it may jump back and forth between the Java stack and native method stacks.</p>
+<p><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1/8859852a-04cf-3ad1-871f-3f9126741580.jpg" alt="8859852a-04cf-3ad1-871f-3f9126741580"></p>
+<p>As depicted in Figure 5-13, a thread first invoked two Java methods, the second of which invoked a native method. This act caused the virtual machine to use a native method stack. In this figure, the native method stack is shown as a finite amount of contiguous memory space. Assume it is a C stack. The stack area used by each C-linkage function is shown in gray and bounded by a dashed line. The first C-linkage function, which was invoked as a native method, invoked another C-linkage function. The second C-linkage function invoked a Java method through the native method interface. This Java method invoked another Java method, which is the current method shown in the figure.</p>
+</blockquote>
+<h2 id="堆-堆内"><a href="#堆-堆内" class="headerlink" title="堆(堆内)"></a>堆(堆内)</h2><p>java heap是可供各个线程<strong>共享</strong>的运行时内存区域，也是供所有类实例和数组对象分配内存的区域，存储了GC所管理的各种对象，内存泄漏最容易发生的区域</p>
+<ul>
+<li><p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
+</li>
+<li><p>基本上都采用了分代收集算法，分为新生代、老年代、其中新生代还分为Eden(80%)、From Survivor(10%)、To survivor(10%)</p>
+<blockquote>
+<p><strong>新生代</strong>： 程序新创建的对象都是从新生代分配内存，新生代由 Eden Space 和两块相同大小的 Survivor Space (通常又称 S0 和 S1 或 From 和 To) 构成，可通过 - Xmn 参数来指定新生代的大小，也可以通过 - XX:SurvivorRation 来调整 Eden Space 及 Survivor Space 的大小。 <strong>老年代</strong>： 用于存放经过多次新生代 GC 任然存活的对象，例如缓存对象，新建的对象也有可能直接进入老年代，主要有两种情况：①. 大对象，可通过启动参数设置 - XX:PretenureSizeThreshold=1024 (单位为字节，默认为 0) 来代表超过多大时就不在新生代分配，而是直接在老年代分配。②. 大的数组对象，切数组中无引用外部对象。 老年代所占的内存大小为 - Xmx 对应的值减去 - Xmn 对应的值。<br><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1/5c113a485acbeb7888cf08701bcd595d_526x298.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Young Generation</td>
+<td>即图中的 Eden + From Space + To Space</td>
+</tr>
+<tr>
+<td>Eden</td>
+<td>存放新生的对象</td>
+</tr>
+<tr>
+<td>Survivor Space</td>
+<td>有两个，存放每次垃圾回收后存活的对象</td>
+</tr>
+<tr>
+<td>Old Generation</td>
+<td>Tenured Generation 即图中的 Old Space</td>
+</tr>
+<tr>
+<td>Permanent Generation</td>
+<td>主要存放应用程序中生命周期长的存活对象</td>
+</tr>
+</tbody></table>
+</blockquote>
+</li>
+<li><p>堆容量可以是固定的也可以是动态拓展和收缩的，内存不需要保证连续</p>
+</li>
+</ul>
+<h2 id="直接内存-堆外"><a href="#直接内存-堆外" class="headerlink" title="直接内存(堆外)"></a>直接内存(堆外)</h2><p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError异常出现，</p>
+<ul>
+<li>本机直接内存的分配不会受到Java堆大小的限制，但是，既然是内存，肯定还是会受到本机总内存大小以及处理器寻址空间的限制</li>
+<li>配置虚拟机参数时不要忽略直接内存，因为会使得各个内存区域总和大于物理内存的限制，从而导致拓展时出现OOM异常</li>
+<li>基于通道（Channel）和缓冲区（Buffer）IO方式的NIO，可以使用Native函数库直接分配堆外内存，避免在Java堆和native堆来回复制数据来提升总体的性能</li>
+<li>不会影响到堆内内存大小</li>
+</ul>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区是可供各个线程共享的内存区域，存储了每一个类的<strong>结构</strong>信息，jvm规范中容量可以是固定的也可以是动态收缩的，并且内存不用保证有连续性</p>
+<ul>
+<li>根据Java虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError异常。</li>
+<li>JDK 7之前，使用永久代实现方法区（容易遇到内存溢出问题），JDK 7 使用Native Memory本地内存来代替永久代，JDK8使用<strong>Metaspace</strong>元数据区来实现方法区，利用元数据分配只受本地内存大小的限制（本地内存剩多少，元数据就有多大）来解决永久代的OOM问题</li>
+</ul>
+<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量池是class文件中每一个类或接口的常量池的运行是表示形式，存储数据的范围都比通常意义上的符号表要更广泛，都在jvm的方法区中进行分配，在加载类和接口道jvm后创建对应的运行时常量池，同时具备方法区的动态拓展和收缩</p>
+<ul>
+<li>受到方法区内存的限制，当常量池无法再申请到内存时会抛出OutOfMemoryError异常。</li>
+<li>Java语言并不要求常量一定只有编译期才能产生，也就是并非预置入Class文件中常量池的内容才能进入方法区运行时常量池，运行期间也可能将新的常量放入池中，这种特性被开发人员利用得比较多的便是String类的intern()方法。</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Java的内存结构的大致就分以上几个点，其中Java堆，是比较重要的一块，也是常见的内存溢出重灾区，GC主要区域，篇幅会比较多</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>《深入理解Java虚拟机》 周志明</p>
+<p>《Java 8 虚拟机规范》</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="http://tobiasll.github.io">tobias</a>
-            <p>原文链接：<a href="http://tobiasll.github.io/2019/09/25/hello-world/">http://tobiasll.github.io/2019/09/25/hello-world/</a>
-            <p>发表日期：<a href="http://tobiasll.github.io/2019/09/25/hello-world/">September 25th 2019, 5:56:34 pm</a>
-            <p>更新日期：<a href="http://tobiasll.github.io/2019/09/25/hello-world/">September 25th 2019, 5:56:34 pm</a>
+            <p>原文链接：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">http://tobiasll.github.io/2019/10/07/java 内存结构/</a>
+            <p>发表日期：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">October 7th 2019, 1:57:25 pm</a>
+            <p>更新日期：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">October 7th 2019, 2:22:41 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -439,13 +526,13 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/09/26/使用hexo搭建个人博客的细节/" title= "使用hexo搭建个人博客的细节">
-                    <div class="nextTitle">使用hexo搭建个人博客的细节</div>
-                </a>
-            
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/09/29/使用frp渗透公司内网中的本机虚拟机服务器/" title= "使用frp渗透公司内网中的本机虚拟机服务器">
+                    <div class="prevTitle">使用frp渗透公司内网中的本机虚拟机服务器</div>
+                </a>
             
         </li>
     </ul>
@@ -578,7 +665,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序言"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行时数据区域"><span class="toc-number">2.</span> <span class="toc-text">运行时数据区域</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序计数器（pc寄存器）"><span class="toc-number">2.1.</span> <span class="toc-text">程序计数器（pc寄存器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA-虚拟机栈"><span class="toc-number">2.2.</span> <span class="toc-text">JAVA 虚拟机栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地方法栈"><span class="toc-number">2.3.</span> <span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆-堆内"><span class="toc-number">2.4.</span> <span class="toc-text">堆(堆内)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#直接内存-堆外"><span class="toc-number">2.5.</span> <span class="toc-text">直接内存(堆外)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法区"><span class="toc-number">2.6.</span> <span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行时常量池"><span class="toc-number">2.7.</span> <span class="toc-text">运行时常量池</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
