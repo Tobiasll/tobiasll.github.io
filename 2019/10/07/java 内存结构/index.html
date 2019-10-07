@@ -414,8 +414,8 @@ height:50vh;
 <h1 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h1><p>jvm在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。</p>
 <blockquote>
 <p>“Java 虚拟机具有一个堆，堆是运行时数据区域，所有类实例和数组的内存均从此处分配。堆是在 Java 虚拟机启动时创建的。”“在 JVM 中堆之外的内存称为非堆内存 (Non-heap memory)”。可以看出 JVM 主要管理两种类型的内存：堆和非堆。简单来说堆就是 Java 代码可及的内存，是留给开发人员使用的；非堆就是 JVM 留给 自己用的，所以方法区、JVM 内部处理或优化所需的内存 (如 JIT 编译后的代码缓存)、每个类结构 (如运行时常数池、字段和方法数据) 以及方法和构造方法 的代码都在非堆内存中。</p>
-<p><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1/jvm_memory.png" alt="jvm_memory"></p>
-<p><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1%5C3d0db09e499f8436e762e8f1072825be_663x613.png" alt="3d0db09e499f8436e762e8f1072825be_663x613"></p>
+<p><img src="/blog_image%5Cjvm_text1/jvm_memory.png" alt="jvm_memory"></p>
+<p><img src="/blog_image%5Cjvm_text1%5C3d0db09e499f8436e762e8f1072825be_663x613.png" alt="3d0db09e499f8436e762e8f1072825be_663x613"></p>
 </blockquote>
 <p>JAVA 的 JVM 的内存可分为 3 个区：堆区（堆内和堆外）、栈 区(虚拟机栈和本地方法栈) 和方法区 (method)</p>
 <h2 id="程序计数器（pc寄存器）"><a href="#程序计数器（pc寄存器）" class="headerlink" title="程序计数器（pc寄存器）"></a>程序计数器（pc寄存器）</h2><p>一块比较小的内存空间，可以看作当前线程所执行的字节码的行号指示器。在虚拟机规范中指pc寄存器。</p>
@@ -447,7 +447,7 @@ height:50vh;
 </ul>
 <blockquote>
 <p>Figure 5-13 shows a graphical depiction of a thread that invokes a native method that calls back into the virtual machine to invoke another Java method. This figure shows the full picture of what a thread can expect inside the Java Virtual Machine. A thread may spend its entire lifetime executing Java methods, working with frames on its Java stack. Or, it may jump back and forth between the Java stack and native method stacks.</p>
-<p><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1/8859852a-04cf-3ad1-871f-3f9126741580.jpg" alt="8859852a-04cf-3ad1-871f-3f9126741580"></p>
+<p><img src="/blog_image%5Cjvm_text1/8859852a-04cf-3ad1-871f-3f9126741580.jpg" alt="8859852a-04cf-3ad1-871f-3f9126741580"></p>
 <p>As depicted in Figure 5-13, a thread first invoked two Java methods, the second of which invoked a native method. This act caused the virtual machine to use a native method stack. In this figure, the native method stack is shown as a finite amount of contiguous memory space. Assume it is a C stack. The stack area used by each C-linkage function is shown in gray and bounded by a dashed line. The first C-linkage function, which was invoked as a native method, invoked another C-linkage function. The second C-linkage function invoked a Java method through the native method interface. This Java method invoked another Java method, which is the current method shown in the figure.</p>
 </blockquote>
 <h2 id="堆-堆内"><a href="#堆-堆内" class="headerlink" title="堆(堆内)"></a>堆(堆内)</h2><p>java heap是可供各个线程<strong>共享</strong>的运行时内存区域，也是供所有类实例和数组对象分配内存的区域，存储了GC所管理的各种对象，内存泄漏最容易发生的区域</p>
@@ -456,7 +456,7 @@ height:50vh;
 </li>
 <li><p>基本上都采用了分代收集算法，分为新生代、老年代、其中新生代还分为Eden(80%)、From Survivor(10%)、To survivor(10%)</p>
 <blockquote>
-<p><strong>新生代</strong>： 程序新创建的对象都是从新生代分配内存，新生代由 Eden Space 和两块相同大小的 Survivor Space (通常又称 S0 和 S1 或 From 和 To) 构成，可通过 - Xmn 参数来指定新生代的大小，也可以通过 - XX:SurvivorRation 来调整 Eden Space 及 Survivor Space 的大小。 <strong>老年代</strong>： 用于存放经过多次新生代 GC 任然存活的对象，例如缓存对象，新建的对象也有可能直接进入老年代，主要有两种情况：①. 大对象，可通过启动参数设置 - XX:PretenureSizeThreshold=1024 (单位为字节，默认为 0) 来代表超过多大时就不在新生代分配，而是直接在老年代分配。②. 大的数组对象，切数组中无引用外部对象。 老年代所占的内存大小为 - Xmx 对应的值减去 - Xmn 对应的值。<br><img src="D:%5Chexo%5Cblog%5Csource%5Cblog_image%5Cjvm_text1/5c113a485acbeb7888cf08701bcd595d_526x298.png" alt="img"></p>
+<p><strong>新生代</strong>： 程序新创建的对象都是从新生代分配内存，新生代由 Eden Space 和两块相同大小的 Survivor Space (通常又称 S0 和 S1 或 From 和 To) 构成，可通过 - Xmn 参数来指定新生代的大小，也可以通过 - XX:SurvivorRation 来调整 Eden Space 及 Survivor Space 的大小。 <strong>老年代</strong>： 用于存放经过多次新生代 GC 任然存活的对象，例如缓存对象，新建的对象也有可能直接进入老年代，主要有两种情况：①. 大对象，可通过启动参数设置 - XX:PretenureSizeThreshold=1024 (单位为字节，默认为 0) 来代表超过多大时就不在新生代分配，而是直接在老年代分配。②. 大的数组对象，切数组中无引用外部对象。 老年代所占的内存大小为 - Xmx 对应的值减去 - Xmn 对应的值。<br><img src="/blog_image/jvm_text1/5c113a485acbeb7888cf08701bcd595d_526x298.png" alt="img"></p>
 <table>
 <thead>
 <tr>
@@ -518,7 +518,7 @@ height:50vh;
             <p>Author：<a href="http://tobiasll.github.io">tobias</a>
             <p>原文链接：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">http://tobiasll.github.io/2019/10/07/java 内存结构/</a>
             <p>发表日期：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">October 7th 2019, 3:01:25 pm</a>
-            <p>更新日期：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">October 7th 2019, 3:03:06 pm</a>
+            <p>更新日期：<a href="http://tobiasll.github.io/2019/10/07/java 内存结构/">October 7th 2019, 3:21:11 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
