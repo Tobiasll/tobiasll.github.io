@@ -287,7 +287,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.5k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.8k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -476,7 +476,13 @@ height:50vh;
 <li>崩溃恢复：相对而言MyISAM崩溃后发生损坏的概率比InnoDB要高很多，而且恢复的速度也要慢</li>
 <li>特有的特性：如果一个存储引擎拥有一些关键的特性，同时又缺乏一些必要的特性，那么有时候不得不做折中的考虑，或者在架构设计上做一些取舍</li>
 </ul>
-<h3 id="日志型应用"><a href="#日志型应用" class="headerlink" title="日志型应用"></a>日志型应用</h3><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><p>《高性能MySQL 第三版》</p>
+<h3 id="日志型应用"><a href="#日志型应用" class="headerlink" title="日志型应用"></a>日志型应用</h3><p>这一类有着高要求的插入速度，数据库不能成为瓶颈，MyISAM或者Archive存储引擎对这类应用比较合适，因为他们开销低，而且插入速度非常块</p>
+<h3 id="只读或者大部分情况都只读的表"><a href="#只读或者大部分情况都只读的表" class="headerlink" title="只读或者大部分情况都只读的表"></a>只读或者大部分情况都只读的表</h3><p>典型的读多写少的业务，如果不介意MyISAM崩溃恢复的问题，选用MyISAM存储引擎是比较合适的，否则还是建议采用InnoDB，在很多场景下，InnoDb的速度都比MyISAM快，特别是使用聚集索引或者将需要的数据放到内存中的情况下</p>
+<p>MyISAM随着应用压力的上升，可能会迅速的恶化，导致各种锁竞争、数据丢失、崩溃等问题</p>
+<h3 id="订单处理"><a href="#订单处理" class="headerlink" title="订单处理"></a>订单处理</h3><p>需要选择有事务的存在引擎，并且可能需要支持外键，InnoDB是最合适的选择</p>
+<h3 id="大数据量"><a href="#大数据量" class="headerlink" title="大数据量"></a>大数据量</h3><p>数据太大的话，则需要建立数据仓库，Infobright是MySQL数据仓库最成功的解决方案，如果不适合则可以使用TokuDB，或者采用InnoDB，不过就需要进行例如分库分表，数据分片等处理</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这里简单的解释了一些MySQL，通篇文章并没有讲关于底层的实现，都是大致的做个介绍，特别是MySQL核心层还有存储引擎层都忽略了，所以接下来都会用多个专题来总结这些原理，详细解释</p>
+<h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><p>《高性能MySQL 第三版》</p>
 <p>《MySQL 技术内幕》</p>
 
     </article>
@@ -486,7 +492,7 @@ height:50vh;
             <p>Author：<a href="http://tobiasll.github.io">tobias</a>
             <p>原文链接：<a href="http://tobiasll.github.io/2019/10/31/MySQL学习笔记—-逻辑架构和简介/">http://tobiasll.github.io/2019/10/31/MySQL学习笔记—-逻辑架构和简介/</a>
             <p>发表日期：<a href="http://tobiasll.github.io/2019/10/31/MySQL学习笔记—-逻辑架构和简介/">October 31st 2019, 11:40:11 am</a>
-            <p>更新日期：<a href="http://tobiasll.github.io/2019/10/31/MySQL学习笔记—-逻辑架构和简介/">October 31st 2019, 5:12:33 pm</a>
+            <p>更新日期：<a href="http://tobiasll.github.io/2019/10/31/MySQL学习笔记—-逻辑架构和简介/">October 31st 2019, 5:33:29 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -633,7 +639,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序言"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL简介"><span class="toc-number">2.</span> <span class="toc-text">MySQL简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL实例逻辑架构"><span class="toc-number">3.</span> <span class="toc-text">MySQL实例逻辑架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#连接MySQL"><span class="toc-number">3.1.</span> <span class="toc-text">连接MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用线程池"><span class="toc-number">3.1.1.</span> <span class="toc-text">使用线程池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的存储引擎"><span class="toc-number">3.2.</span> <span class="toc-text">MySQL的存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB-存储引擎"><span class="toc-number">3.2.1.</span> <span class="toc-text">InnoDB 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM-存储引擎"><span class="toc-number">3.2.2.</span> <span class="toc-text">MyISAM 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NDB存储引擎"><span class="toc-number">3.2.3.</span> <span class="toc-text">NDB存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory-存储引擎"><span class="toc-number">3.2.4.</span> <span class="toc-text">Memory 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Archive-存储引擎"><span class="toc-number">3.2.5.</span> <span class="toc-text">Archive 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Federated-存储引擎"><span class="toc-number">3.2.6.</span> <span class="toc-text">Federated 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maria-存储引擎"><span class="toc-number">3.2.7.</span> <span class="toc-text">Maria 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他存储引擎"><span class="toc-number">3.2.8.</span> <span class="toc-text">其他存储引擎</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储引擎的选择"><span class="toc-number">3.3.</span> <span class="toc-text">存储引擎的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日志型应用"><span class="toc-number">3.3.1.</span> <span class="toc-text">日志型应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.4.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考内容"><span class="toc-number">3.5.</span> <span class="toc-text">参考内容</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#序言"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL简介"><span class="toc-number">2.</span> <span class="toc-text">MySQL简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL实例逻辑架构"><span class="toc-number">3.</span> <span class="toc-text">MySQL实例逻辑架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#连接MySQL"><span class="toc-number">3.1.</span> <span class="toc-text">连接MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用线程池"><span class="toc-number">3.1.1.</span> <span class="toc-text">使用线程池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的存储引擎"><span class="toc-number">3.2.</span> <span class="toc-text">MySQL的存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB-存储引擎"><span class="toc-number">3.2.1.</span> <span class="toc-text">InnoDB 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM-存储引擎"><span class="toc-number">3.2.2.</span> <span class="toc-text">MyISAM 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NDB存储引擎"><span class="toc-number">3.2.3.</span> <span class="toc-text">NDB存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory-存储引擎"><span class="toc-number">3.2.4.</span> <span class="toc-text">Memory 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Archive-存储引擎"><span class="toc-number">3.2.5.</span> <span class="toc-text">Archive 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Federated-存储引擎"><span class="toc-number">3.2.6.</span> <span class="toc-text">Federated 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maria-存储引擎"><span class="toc-number">3.2.7.</span> <span class="toc-text">Maria 存储引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他存储引擎"><span class="toc-number">3.2.8.</span> <span class="toc-text">其他存储引擎</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储引擎的选择"><span class="toc-number">3.3.</span> <span class="toc-text">存储引擎的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日志型应用"><span class="toc-number">3.3.1.</span> <span class="toc-text">日志型应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只读或者大部分情况都只读的表"><span class="toc-number">3.3.2.</span> <span class="toc-text">只读或者大部分情况都只读的表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#订单处理"><span class="toc-number">3.3.3.</span> <span class="toc-text">订单处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大数据量"><span class="toc-number">3.3.4.</span> <span class="toc-text">大数据量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.4.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考内容"><span class="toc-number">3.5.</span> <span class="toc-text">参考内容</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -743,11 +749,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
-    
         <span class="sidebar-tag-name" data-tags="jvm"><span class="iconfont-archer">&#xe606;</span>jvm</span>
     
         <span class="sidebar-tag-name" data-tags="工具使用"><span class="iconfont-archer">&#xe606;</span>工具使用</span>
+    
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
